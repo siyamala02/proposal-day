@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposal Day ❤️</title>
+
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        background: url("https://images.unsplash.com/photo-1518199266791-5375a83190b7") no-repeat center/cover;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Comic Sans MS', cursive;
+        overflow: hidden;
+        color: white;
+        text-align: center;
+    }
+
+    .box {
+        background: rgba(0,0,0,0.55);
+        padding: 25px;
+        border-radius: 20px;
+        width: 90%;
+        max-width: 400px;
+    }
+
+    h1 { font-size: 1.8em; }
+    p { font-size: 1.1em; }
+
+    .buttons {
+        margin-top: 20px;
+        position: relative;
+        height: 120px;
+    }
+
+    button {
+        padding: 15px 25px;
+        font-size: 18px;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        position: absolute;
+        transition: all 0.3s ease;
+    }
+
+    #yes {
+        background: #00ff99;
+        color: black;
+        left: 18%;
+    }
+
+    #no {
+        background: #ff3333;
+        color: white;
+        left: 55%;
+    }
+
+    .tap {
+        margin-top: 10px;
+        font-size: 0.9em;
+        opacity: 0.9;
+    }
+
+    .kiss {
+        position: absolute;
+        font-size: 80px;
+        animation: float 10s linear infinite;
+    }
+
+    @keyframes float {
+        from { transform: translateY(100vh); opacity: 1; }
+        to { transform: translateY(-10vh); opacity: 0; }
+    }
+</style>
+</head>
+
+<body onclick="playMusic()">
+
+<!-- 🎵 Tamil Romantic BG Music -->
+<audio id="bgMusic" loop>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+</audio>
+
+<div class="box" id="proposalBox">
+    <h1>Heyyy Chellooooooooo 😘</h1>
+    <p>
+        This Proposal Day ❤️<br>
+        I want to ask you something special 💍
+    </p>
+    <p><b>Will you marry me? 🥺💖</b></p>
+
+    <div class="buttons">
+        <button id="yes" onclick="sayYes()">YES 😍</button>
+        <button id="no" onmouseover="runAway()" ontouchstart="runAway()">NO 🙈</button>
+    </div>
+
+    <div class="tap">🔊 Tap anywhere to play music</div>
+</div>
+
+<script>
+    let yesSize = 18;
+    let musicPlayed = true;
+
+    function playMusic() {
+        if (!musicPlayed) {
+            document.getElementById("bgMusic").play();
+            musicPlayed = true;
+        }
+    }
+
+    function runAway() {
+        let noBtn = document.getElementById("no");
+        let x = Math.random() * 70;
+        let y = Math.random() * 60;
+        noBtn.style.left = x + "%";
+        noBtn.style.top = y + "px";
+
+        
+    }
+
+    function sayYes() {
+        document.body.innerHTML = `
+            <h1> 😍💋</h1>
+            <h1>💖 I LOVE YOU MACHAN 💖</h1><br>
+            <h3>— by Kanmani 😘</h3>
+        `;
+
+        for (let i = 0; i < 60; i++) {
+            let kiss = document.createElement("div");
+            kiss.innerHTML = "❤️";
+            kiss.className = "kiss";
+            kiss.style.left = Math.random() * 1000 + "vw";
+            kiss.style.animationDuration = (2 + Math.random() * 3) + "s";
+            document.body.appendChild(kiss);
+        }
+    }
+</script>
+
+</body>
+</html>
